@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add products</title>
+    <style>
+      label {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <% if (typeof previousInsertionSuccessful !== 'undefined' &&
+    previousInsertionSuccessful===true) { %>
+    <h1 style="color: red">Product added.</h1>
+    <%}%> <% if (typeof hasError !== 'undefined') { %>
+    <h1 style="color: red"><%= hasError%></h1>
+    <%}%>
+    <h1>Enter New Products(For Admins)</h1>
+    <form action="" method="POST">
+      <label>
+        Product Name:
+        <input type="text" name="product_name" />
+      </label>
+      <label>
+        Price:
+        <input type="number" name="price" />
+      </label>
+      <label>
+        Quantity:
+        <input type="number" name="quantity" />
+      </label>
+      <label>
+        Description:
+        <textarea name="description" cols="30" rows="10"></textarea>
+      </label>
+      <button>Add Products</button>
+    </form>
+    <script>
+      fetch("http://localhost:3000/users", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          username: "yash",
+          password: "12345678",
+          email: "aa@a.com",
+        }),
+      })
+        .then((response) => response.json())
+        .then(console.log);
+    </script>
+  </body>
+</html>
