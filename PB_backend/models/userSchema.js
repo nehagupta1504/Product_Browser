@@ -3,9 +3,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
+  username: {
+    type: String,
+    unique: true,
+  },
+  passwordHash: String,
+  email: {
+    type: String,
+    unique: true,
+  },
+  favourites: [], //t0 contain product id
 });
 
 //User is the name of the collection

@@ -22,10 +22,13 @@ let productSchema = yup.object().shape({
  * If in app.js file we write app.use('/products', Router) so
  * here router.get('/',()=>{}) will mean /products only
  */
+// /products
 router.get("/", async (req, res) => {
   const { json } = req.query;
+  console.log(json);
   if (json !== undefined) {
     const result = await Product.find();
+    console.log(result);
     res.json(result);
   } else {
     //to render prodcts.ejs as html on the screen to get new products
